@@ -6,6 +6,7 @@ class HittingRockBottom
     File.open path_to_cave_file, "r" do |file|
       @cave = file.readlines
     end
+    @output_file = "#{File.dirname(path_to_cave_file)}/#{File.basename(path_to_cave_file).split('.').insert(1,'_output.').join}"
     @units = @cave.shift(2).first.to_i - 1
     @last_unit = { :col => 0, :row => 1 }
   end
@@ -47,6 +48,9 @@ class HittingRockBottom
         end
       end
       depth += col_depth.to_s + " "
+    end
+    File.open @output_file, "w" do |file|
+      file.write depth.chop + "\n"
     end
     depth.chop
   end
