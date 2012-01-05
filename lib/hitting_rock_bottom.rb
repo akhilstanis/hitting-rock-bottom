@@ -34,4 +34,21 @@ class HittingRockBottom
     @cave
   end
 
+  def water_depth
+    fill_water
+    depth = ""
+    (@cave.first.size-1).times do |col|
+      col_depth = 0
+      @cave.each do |row|
+        col_depth += 1 if row[col] == "~"
+        if col_depth > 1 && row[col] == ' '
+          col_depth = "~"
+          break
+        end
+      end
+      depth += col_depth.to_s + " "
+    end
+    depth.chop
+  end
+
 end

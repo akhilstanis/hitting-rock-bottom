@@ -100,6 +100,14 @@ describe HittingRockBottom do
 
   end
 
+  it "should find water depth" do
+    @o100 = HittingRockBottom.new(File.expand_path(File.dirname(__FILE__)) + '/fixtures/simple_cave_100.txt')
+    @o100.water_depth.should == "1 2 2 4 4 4 4 6 6 6 1 1 1 1 4 3 3 4 4 4 4 5 5 5 5 5 2 2 1 1 0 0"
+
+    @o45 = HittingRockBottom.new(File.expand_path(File.dirname(__FILE__)) + '/fixtures/simple_cave.txt')
+    @o45.water_depth.should == "1 2 2 4 4 4 4 6 6 6 1 1 1 1 ~ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
+  end
+
 
 
 end
